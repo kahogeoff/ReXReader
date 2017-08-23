@@ -33,7 +33,7 @@ Currently UI are using T.Chinese, this app is unfinished.
     - [x] Load more than one page of gallery list
 - [ ] Parse the image gallery
     - [ ] Place the image into a image viewer
-    - [ ]etc.
+    - [ ] etc.
 - [x] Implement the "Like" function
 - [ ] Implement the "Search" function
 - [ ] Implement the "Download" function
