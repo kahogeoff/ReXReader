@@ -40,7 +40,7 @@ Currently UI are using T.Chinese, this app is unfinished.
 - [ ] Login to Exhentai
 - [ ] Remove trash code
 - [ ] Improve performance
-- [ ] Test on physical devices
+- [x] Test on physical devices
     - [x] Test on iOS devices
     - [ ] Test on Android devices
 - [ ] More localized support
