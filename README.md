@@ -3,7 +3,7 @@
 
 A remake version of my pervious E-/Exhentai reader, for both iOS and Android devices.
 
-Currently unfinished.
+Currently UI are using T.Chinese, this app is unfinished.
 
 ## Disclaimer
 1. Since both **E-hentai** and **Exhentai** are the adult sites. Please DON'T run this code/app if you're under 18 (or the restricted age of your country)
@@ -25,7 +25,7 @@ Currently unfinished.
 
 ## TODO
 - [x] Basic UI
-    - [ ] Privacy overlay
+    - [x] Privacy overlay
     - [ ] Completed UI
 - [x] Parse to get the gallery list
     - [x] Get the gallery metadata
@@ -43,4 +43,5 @@ Currently unfinished.
 - [ ] Test on physical devices
     - [x] Test on iOS devices
     - [ ] Test on Android devices
+- [ ] More localized support
 - [ ] etc.
