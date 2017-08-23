@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' data: gap: https://ssl.gstatic.com https://e-hentai.org http://g.e-hentai.org http://exhentai.org https://api.e-hentai.org/api.php https://exhentai.org/api.php https://fonts.gstatic.com 'unsafe-eval' 'unsafe-inline'; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+        media-src *; 
+        img-src 'self' data: content: https://ehgt.org/ https://e-hentai.org http://g.e-hentai.org http://exhentai.org;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/tocas.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <title>ReXReader</title>
+</head>
+
+<body id="moon-instance" class="app">
+    <div m-literal:class="{ts:true, disabled: showCover === false, active: showCover === true, dimmer:true}" m-on:click="toggleGalleryCover('')">
+        <img class="ts image" src="{{ shownCoverUrl }}">
+    </div>
+    <div class="ts active dimmer" m-if="showPrivacyCover">
+        <div class="ts active dimmer">
+            <h3 class="ts center aligned inverted icon header">
+                <i class="icons">
+                    <i class="eye icon"></i>
+                    <i class="huge negative dont icon"></i>
+                </i>
+                <p>不給您看！</p>
+            </h3>
+        </div>
+    </div>
+
+    <div class="ts left sidebar inverted vertical large menu">
+        <a class="item" m-on:click="reloadCurrentGalleryList"><i class="home icon"></i> 首頁</a>
+        <a class="item" m-on:click="showLikedGalleryList"><i class="heart icon"></i> 我的最愛</a>
+    </div>
+
+    <div class="pusher">
+        <div class="ts borderless inverted primary raised top fixed fluid large menu">
+            <a class="item" href="#!" m-on:click="toggleMenuSidebar"><i class="list icon"></i></a>
+            <div class="header stretched center aligned item">Gallery List</div>
+            <a class="item" href="#!"><i class="search icon"></i></a>
+        </div>
+
+        <div m-literal:class="{ts:true, container:true, gallery:true, disabled: showCover === true}">
+            <div class="ts hidden divider"></div>
+            <div m-if="current_state === 'home'">
+                <div class="ts active centered inline text loader" m-if="gallery_list.length < 1">載入中...</div>
+            </div>
+            <div m-if="current_state === 'liked'">
+                <h3 class="ts center aligned icon header" m-if="liked_list.length < 1">
+                    <i class="negative empty heart icon"></i>
+                    <p>沒有東西</p>
+                    <div class="sub header">您目前沒有標記任何「我的最愛」...</div>
+                </h3>
+            </div>
+            <div class="ts one column centered grid">
+                <div m-for="page in loaded_list">
+                    <div class="row">
+                        <div class="ts container">
+                            <div class="ts three stackable cards">
+                                <div m-for="item in page.gmetadata" class="ts raised centered card">
+                                    <div class="extra content" style="text-overflow: ellipsis;">
+                                        <div class="smaller header">
+                                            <div style="
+                                            overflow : hidden;
+                                            text-overflow: ellipsis;
+                                            display: -webkit-box;
+                                            -webkit-line-clamp: 1;
+                                            -webkit-box-orient: vertical;
+                                            ">{{ item.title }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <div class="ts 1:1 embed" m-on:click="toggleGalleryCover(item.thumb)">
+                                            <img src="{{ item.thumb }}">
+                                        </div>
+                                    </div>
+                                    <div class="center aligned extra content">
+                                        <div class="ts horizontal bulleted link list">
+                                            <div class="item">
+                                                <span class="ts circular doujinshi label" m-if="item.category === 'Doujinshi'">{{ item.category }}</span>
+                                                <span class="ts circular manga label" m-if="item.category === 'Manga'">{{ item.category }}</span>
+                                                <span class="ts circular acg label" m-if="item.category === 'Artist CG Sets'">{{ item.category }}</span>
+                                                <span class="ts circular gcg label" m-if="item.category === 'Game CG Sets'">{{ item.category }}</span>
+                                                <span class="ts circular western label" m-if="item.category === 'Western'">{{ item.category }}</span>
+                                                <span class="ts circular nonh label" m-if="item.category === 'Non-H'">{{ item.category }}</span>
+                                                <span class="ts circular imageset label" m-if="item.category === 'Image Sets'">{{ item.category }}</span>
+                                                <span class="ts circular cosplay label" m-if="item.category === 'Cosplay'">{{ item.category }}</span>
+                                                <span class="ts circular label" m-if="item.category === 'Misc'">{{ item.category }}</span>
+                                            </div>
+                                            <div class="item"><a href="#">Someone</a></div>
+                                            <div class="item"><i class="star large warning icon"></i>x{{ item.rating }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="ts fluid bottom attached buttons">
+                                        <button class="ts big icon button"><i class="download icon"></i></button>
+                                        <button class="ts big primary icon button"><i class="eye icon"></i></button>
+                                        <button class="ts big icon button" m-on:click="toggleLikedGallery(item)"><i m-literal:class="{empty: liked_list.indexOf(item) === -1,heart:true, negative: liked_list.indexOf(item) > -1,icon:true}"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="ts horizontal divider" m-if="current_state === 'home'">Page {{ current_loaded_page }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/ajax.min.js"></script>
+    <script type="text/javascript" src="js/moon/moon.min.js"></script>
+    <script type="text/javascript" src="js/tocas.js"></script>
+    <script type="text/javascript" src="js/vm.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>

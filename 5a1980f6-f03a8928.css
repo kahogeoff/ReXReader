@@ -1,0 +1,501 @@
+body {
+  background: white;
+  color: black;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+cordova-combo /deep/ select,
+body /deep/ textarea,
+body /deep/ input[type^=text],
+body /deep/ input[type^=number],
+body /deep/ input[type^=checkbox] {
+  background: white;
+  border: 1px solid rgb(211,211,211);
+  color: black;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+input[type=range]::-ms-fill-lower,
+input[type=range]::-ms-fill-upper {
+  background: white;
+  border: 1px solid rgb(211,211,211);
+  color: black;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background: white;
+  border: 1px solid rgb(211,211,211);
+  color: black;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+input[type=range]::-moz-range-track {
+  background: white;
+  border: 1px solid rgb(211,211,211);
+  color: black;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+cordova-combo /deep/ select:focus,
+body /deep/ textarea:focus,
+body /deep/ input[type^=text]:focus,
+body /deep/ input[type^=number]:focus,
+body /deep/ input[type^=checkbox]:focus {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: none;
+}
+
+input[type=range]:focus::-ms-fill-lower,
+input[type=range]:focus::-ms-fill-upper {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: none;
+}
+
+input[type=range]:focus::-moz-range-track {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: none;
+}
+
+cordova-combo /deep/ select:hover,
+body /deep/ textarea:hover,
+body /deep/ input[type^=text]:hover,
+body /deep/ input[type^=number]:hover,
+body /deep/ input[type^=checkbox]:hover {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+input[type=range]:hover::-ms-fill-lower,
+input[type=range]:hover::-ms-fill-upper {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+input[type=range]:hover::-webkit-slider-runnable-track {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+input[type=range]:hover::-moz-range-track {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+input[type=range]::-ms-thumb {
+  border: 1px solid rgb(160,160,160);
+  background: white;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  border: 1px solid rgb(160,160,160);
+  background: white;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: 1px solid rgb(160,160,160);
+  background: white;
+}
+
+input[type=range]:focus::-ms-thumb {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+}
+
+input[type=range]:focus::-moz-range-thumb {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+}
+
+input[type=range]:hover::-ms-thumb {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+}
+
+input[type=range]:hover::-webkit-slider-thumb {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+}
+
+input[type=range]:hover::-moz-range-thumb {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+}
+
+::-ms-check {
+  border: 1px solid rgb(160,160,160);
+  background: white;
+  color: black;
+}
+
+:focus::-ms-check {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+}
+
+:hover::-ms-check {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+}
+
+body /deep/ button:active:hover,
+body /deep/ .cordova-item-wrapper:active:hover {
+  color: white;
+  background: rgb(160,160,160);
+  border: 1px solid rgb(160,160,160);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+body /deep/ button,
+body /deep/ .cordova-item-wrapper {
+  background: white;
+  border: 1px solid rgb(211,211,211);
+  color: black;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+body /deep/ button:focus,
+body /deep/ .cordova-item-wrapper:focus {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: none;
+}
+
+body /deep/ button:hover,
+body /deep/ .cordova-item-wrapper:hover {
+  background: rgb(240,240,240);
+  border: 1px solid rgb(160,160,160);
+  color: rgb(33,33,33);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  outline: undefined;
+}
+
+body /deep/ label {
+  color: rgba(0,0,0,0.95);
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+body /deep/ .cordova-value {
+  color: black;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+body /deep/ .cordova-panel-inner {
+  border: 1px solid rgba(0, 0, 0, 0.785);
+  background: rgba(255,255,255,0.97);
+  outline: undefined;
+}
+
+body /deep/ .cordova-panel-inner:focus {
+  border: 1px solid rgb(128,128,128);
+  outline: none;
+  background: rgba(255,255,255,0.97);
+}
+
+body /deep/ .cordova-panel-inner .cordova-header {
+  background: black;
+  opacity: 0.7;
+  color: rgb(204,204,204);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+}
+
+body /deep/ .cordova-panel-inner:focus .cordova-header {
+  background: rgb(128,128,128);
+  color: black;
+  font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Copyright (c) Microsoft Corporation. All rights reserved. */
+
+/* Sizes below here will be scaled to the current theme, and the result included in the theme CSS file */
+
+cordova-panel {
+    width: 320px;
+}
+
+cordova-dialog {
+    width: 377px;
+}
+
+.cordova-main {
+    margin: 1px 0 0 1px;
+    column-width: 323px;
+    -moz-column-width: 323px;
+    -webkit-column-width: 323px;
+}
+
+body /deep/ .cordova-header {
+    padding: 5px 9px;
+    height: 20px;
+    line-height: 20px;
+}
+
+body /deep/ .cordova-header .spoken-text span {
+    width: calc(100% - 40px);
+}
+
+/* 12px margin around top level items in the content a panel */
+body /deep/ .cordova-content > ::content > * {
+    margin: 12px;
+}
+
+body /deep/ .cordova-value {
+    margin-left: 6px;
+}
+
+body /deep/ input[type^=range] {
+    width: 112px;
+}
+
+body /deep/ input[type^=checkbox],
+body /deep/ input[type^=radio]{
+    width: 17px;
+    height: 17px;
+}
+
+cordova-combo /deep/ select {
+    min-width: 112px;
+}
+
+cordova-button {
+    min-width: 112px;
+}
+
+body /deep/ select,
+body /deep/ input[type^=text],
+body /deep/ input[type^=number], input[type^=number] {
+    padding: 5px;
+}
+
+body /deep/ textarea {
+    padding: 2px 4px;
+    width: calc(100% - 10px); /* Account for padding and border */
+}
+
+body /deep/ input[type^=text],
+body /deep/ input[type^=number] {
+    width: 100px;
+}
+
+body /deep/ cordova-radio {
+    padding: 2px;
+}
+
+body /deep/ button {
+    padding: 5px 13px;
+}
+
+body /deep/ .cordova-item-wrapper {
+    padding: 5px;
+}
+
+body /deep/ cordova-item /deep/ .close-button {
+    width: 17px;
+    height: 17px;
+    top: 5px;
+    right: 5px;
+}
+
+body /deep/ .cordova-collapse-icon svg,
+body /deep/ .cordova-close-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+body /deep/ .cordova-collapse-icon,
+body /deep/ .cordova-close-icon {
+    right: 10px;
+}
+
+/* Style slider for Chrome/Safari */
+
+body /deep/ input[type=range]::-webkit-slider-runnable-track {
+    height: 2px;
+}
+
+body /deep/ input[type=range]::-webkit-slider-thumb {
+    height: 20px;
+    width: 11px;
+    margin-top: -10px;
+}
+
+/* Style slider for IE */
+
+input[type=range]::-ms-track {
+    height: 2px;
+    border-top: solid transparent 10px;
+    border-bottom: solid transparent 10px;
+    /* This keeps the transparency so the slider bar is against
+       background color rather than button-color */
+    -ms-high-contrast-adjust: none;
+
+}
+
+/* These properties !important to override -webkit-slider-thumb values in Edge */
+input[type=range]::-ms-thumb {
+    height: 18px !important;
+    width: 9px !important;
+    margin-top: 0 !important;
+}
+
+/* Style slider for Firefox */
+
+input[type=range]::-moz-range-track {
+    height: 0;
+}
+
+input[type=range]::-moz-range-thumb {
+    height: 18px;
+    width: 9px;
+    border-radius: 0;
+}
+
+/* The following items are here only to ensure they come after the theme css rules, since they override them
+   (cordova-item 'borrows' button themeing, but doesn't want full borders). */
+
+body /deep/ cordova-item:first-child /deep/ .cordova-item-wrapper,
+body /deep/ cordova-item:first-child /deep/ .cordova-item-wrapper:hover,
+body /deep/ cordova-item:first-child /deep/ .cordova-item-wrapper:focus,
+body /deep/ cordova-item:first-child /deep/ .cordova-item-wrapper:hover:active {
+    border-top-color: rgba(0,0,0,0);
+}
+
+body /deep/ cordova-item:last-child /deep/ .cordova-item-wrapper,
+body /deep/ cordova-item:last-child /deep/ .cordova-item-wrapper:hover,
+body /deep/ cordova-item:last-child /deep/ .cordova-item-wrapper:focus,
+body /deep/ cordova-item:last-child /deep/ .cordova-item-wrapper:hover:active {
+    border-bottom-color: rgba(0,0,0,0);
+}
+
+body /deep/ .cordova-item-wrapper,
+body /deep/ .cordova-item-wrapper:hover,
+body /deep/ .cordova-item-wrapper:focus,
+body /deep/ .cordova-item-wrapper:hover:active {
+    border-left-color: rgba(0,0,0,0);
+    border-right-color: rgba(0,0,0,0);
+}
+
+body /deep/ .cordova-item-wrapper {
+    background: transparent;
+}
+
+/* Hacks to work around multi-column bug in Chrome 48+. The following section
+   is removed for other browsers when the file is served */
+
+/* BEGIN CHROME */
+body /deep/ .cordova-panel-inner {
+    padding-bottom: 1px;
+}
+
+cordova-panel {
+    padding: 3px 0;
+}
+
+.cordova-main {
+    padding: 2px 0 0 5px;
+}
+
+body /deep/ input[type=range] {
+    border-top: solid transparent 9px;
+    border-bottom: solid transparent 9px;
+}
+
+/* END CHROME */
+
+/* BEGIN !CHROME */
+body .cordova-panel-inner {
+    margin-bottom: 7px;
+}
+
+.cordova-main {
+    padding: 5px;
+}
+/* END !CHROME */
+

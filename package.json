@@ -1,0 +1,47 @@
+{
+    "name": "com.geoffstudio.rexreader",
+    "displayName": "ReXReader",
+    "version": "1.0.0",
+    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Apache Cordova Team",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@fdaciuk/ajax": "^2.3.0",
+        "browserify": "^14.4.0",
+        "cordova-android": "^6.2.3",
+        "cordova-browser": "^4.1.0",
+        "cordova-ios": "^4.4.0",
+        "cordova-plugin-blurry-privacy-screen": "git+https://github.com/lifeofcoding/cordova-blur-app-privacy-screen.git",
+        "cordova-plugin-compat": "^1.1.0",
+        "cordova-plugin-console": "^1.0.7",
+        "cordova-plugin-device": "^1.1.6",
+        "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-statusbar": "^2.2.3",
+        "cordova-plugin-whitelist": "^1.3.2",
+        "hammerjs": "^2.0.8",
+        "mithril": "^1.1.3",
+        "photoswipe": "^4.1.2",
+        "pulltorefreshjs": "github:BoxFactura/pulltorefresh.js"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-console": {},
+            "cordova-plugin-statusbar": {},
+            "cordova-plugin-device": {},
+            "cordova-plugin-file": {}
+        },
+        "platforms": [
+            "android",
+            "browser",
+            "ios"
+        ]
+    },
+    "devDependencies": {
+        "uglifyify": "^4.0.3"
+    }
+}

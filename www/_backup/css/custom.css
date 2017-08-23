@@ -1,0 +1,76 @@
+* {
+    user-select: none;
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.ts.label.manga {
+    background: #F69543;
+    border-color: #F69543;
+    color: #FFF;
+}
+
+.ts.label.doujinshi {
+    background: #CE5F58;
+    border-color: #CE5F58;
+    color: #FFF;
+}
+
+.ts.label.acg {
+    background: #DFE623;
+    border-color: #DFE623;
+    color: #FFF;
+}
+
+.ts.label.gcg {
+    background: #1A6925;
+    border-color: #1A6925;
+    color: #FFF;
+}
+
+.ts.label.western {
+    background: #3AE652;
+    border-color: #3AE652;
+    color: #FFF;
+}
+
+.ts.label.nonh {
+    background: #47D0E5;
+    border-color: #47D0E5;
+    color: #FFF;
+}
+
+.ts.label.imageset {
+    background: #4163CC;
+    border-color: #4163CC;
+    color: #FFF;
+}
+
+.ts.label.cosplay {
+    background: #7A41CC;
+    border-color: #7A41CC;
+    color: #FFF;
+}
+.ts.container.gallery:not(disable) {
+    position: relative;
+    margin-top: 6vh;
+    height: 94vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ts.container.gallery.disabled{
+    overflow-y: hidden;
+}
