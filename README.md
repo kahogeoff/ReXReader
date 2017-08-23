@@ -1,4 +1,5 @@
 # ReXReader
+[![works badge](https://cdn.rawgit.com/nikku/works-on-my-machine/v0.2.0/badge.svg)](https://github.com/nikku/works-on-my-machine)
 A remake version of my pervious E-/Exhentai reader, for both iOS and Android devices.
 
 Currently unfinished.
