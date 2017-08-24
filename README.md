@@ -8,7 +8,7 @@ Currently UI are using T.Chinese, this app is unfinished.
 ## Disclaimer
 1. Since both **E-hentai** and **Exhentai** are the adult sites. Please DON'T run this code/app if you're under 18 (or the restricted age of your country)
 
-2. **E-hentai** and **Exhentai** official have no any relationship of this mobile app.
+2. Official **E-hentai** and **Exhentai** have no any relationship of this mobile app.
 
 ## Features
 1. "Browse" the galleries of E-/Exhentai.
