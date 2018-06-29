@@ -11,7 +11,7 @@ var ImageGallery = {
     default_api: 'https://api.e-hentai.org/api.php',
 
     getGallery: function(gid, gtoken, file_count){
-        ImageGallery.gallery_url = ImageGallery.default_src + "g/" + gid + "/" + gtoken + "/";
+        ImageGallery.gallery_url = `${ImageGallery.default_src}g/${gid}/${gtoken}/`;
         ImageGallery.max_file_num = file_count;
         
         

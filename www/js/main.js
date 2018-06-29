@@ -8,8 +8,10 @@ var OverlayView = require("./views/OverlayView");
 var PrivacyOverlay = require("./views/PrivacyOverlay");
 var NavMenuView = require("./views/NavMenuView");
 var MainMenuView = require("./views/MainMenuView");
+var ImageGalleryView = require("./views/ImageGalleryView");
 
 var GalleryList = require("./models/GalleryList");
+
 /*
 var swipeToShowMenu = function() {
     var stage = document.getElementById("gesture-stage");
@@ -113,7 +115,35 @@ var LikedPage = {
     }
 }
 
+var GalleryPage = {
+    view: function () {
+        return m("div", {
+            style: "width: 100vw; height: 100vh"
+        }, [
+            //m(OverlayView),
+            m(PrivacyOverlay),
+            m(MainMenuView),
+            m("div", {
+                class: "pusher"
+            }, [
+                m(NavMenuView, {is_gallery: 1}),
+                m("div", {
+                    class: "ts container gallery",
+                    id: "gallery-holder"
+                }, [
+                    m("div", {
+                        class: "ts hidden divider"
+                    }),
+                    m(ImageGalleryView)
+                ])
+            ])
+        ])
+    }
+}
+
+// Route handling
 m.route(document.body, "/Home", {
     "/Home": HomePage,
-    "/Liked": LikedPage
+    "/Liked": LikedPage,
+    "/Gallery": GalleryPage
 });

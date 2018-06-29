@@ -1620,8 +1620,10 @@ var OverlayView = require("./views/OverlayView");
 var PrivacyOverlay = require("./views/PrivacyOverlay");
 var NavMenuView = require("./views/NavMenuView");
 var MainMenuView = require("./views/MainMenuView");
+var ImageGalleryView = require("./views/ImageGalleryView");
 
 var GalleryList = require("./models/GalleryList");
+
 /*
 var swipeToShowMenu = function() {
     var stage = document.getElementById("gesture-stage");
@@ -1645,7 +1647,6 @@ var swipeToShowMenu = function() {
 */
 
 var HomePage = {
-    is_loading: false,
     oncreate: function(){
         PullToRefresh.init({
             mainElement: '#reloader',
@@ -1726,18 +1727,46 @@ var LikedPage = {
     }
 }
 
+var GalleryPage = {
+    view: function () {
+        return m("div", {
+            style: "width: 100vw; height: 100vh"
+        }, [
+            //m(OverlayView),
+            m(PrivacyOverlay),
+            m(MainMenuView),
+            m("div", {
+                class: "pusher"
+            }, [
+                m(NavMenuView, {is_gallery: 1}),
+                m("div", {
+                    class: "ts container gallery",
+                    id: "gallery-holder"
+                }, [
+                    m("div", {
+                        class: "ts hidden divider"
+                    }),
+                    m(ImageGalleryView)
+                ])
+            ])
+        ])
+    }
+}
+
+// Route handling
 m.route(document.body, "/Home", {
     "/Home": HomePage,
-    "/Liked": LikedPage
+    "/Liked": LikedPage,
+    "/Gallery": GalleryPage
 });
-},{"./models/GalleryList":5,"./views/GalleryListHolder":11,"./views/LikedListHolder":13,"./views/MainMenuView":14,"./views/NavMenuView":15,"./views/OverlayView":16,"./views/PrivacyOverlay":17,"mithril":2,"pulltorefreshjs":3}],5:[function(require,module,exports){
+},{"./models/GalleryList":5,"./views/GalleryListHolder":12,"./views/ImageGalleryView":14,"./views/LikedListHolder":15,"./views/MainMenuView":16,"./views/NavMenuView":17,"./views/OverlayView":18,"./views/PrivacyOverlay":19,"mithril":2,"pulltorefreshjs":3}],5:[function(require,module,exports){
 var m = require("mithril");
 var ajax = require('@fdaciuk/ajax');
 
 var GalleryList = {
     current_loaded_page: 1,
     loaded_galleries: [],
-    default_src: 'http://g.e-hentai.org/',
+    default_src: 'https://e-hentai.org/',
     default_api: 'https://api.e-hentai.org/api.php',
     is_loading: false,
 
@@ -1765,7 +1794,8 @@ var GalleryList = {
 
     parsingRawGListHTML: function(raw) {
         var tmp_gidlist = [];
-        var regex_patten = /class="it5"><a href="https:\/\/e-hentai\.org\/g\/(\d+)\/(\S+)\/"/g;
+        //var regex_patten = /class="it5"><a href="https:\/\/e-hentai\.org\/g\/(\d+)\/(\S+)\/"/g;
+        var regex_patten = new RegExp ('class="it5"><a href="'+GalleryList.default_src+'g/(\\d+)/(\\S+)/"',"g");
         //console.log(raw);
 
         while ((match = regex_patten.exec(raw)) !== null) {
@@ -1820,6 +1850,56 @@ var GalleryList = {
 module.exports = GalleryList;
 },{"@fdaciuk/ajax":1,"mithril":2}],6:[function(require,module,exports){
 var m = require("mithril");
+var ajax = require('@fdaciuk/ajax');
+
+var ImageGallery = {
+    max_list_page: 1,
+    max_file_num: 1,
+    current_loaded_page: 0,
+    loaded_pages: [],
+    gallery_url: "",
+    default_src: 'https://e-hentai.org/',
+    default_api: 'https://api.e-hentai.org/api.php',
+
+    getGallery: function(gid, gtoken, file_count){
+        ImageGallery.gallery_url = `${ImageGallery.default_src}g/${gid}/${gtoken}/`;
+        ImageGallery.max_file_num = file_count;
+        
+        
+    },
+
+    getMaxListPage: function(gurl){
+        var request = ajax({
+            method: 'get',
+            url: gurl,
+            data: {
+              p: 0
+            }
+        });
+
+        request.then(function(response){
+            //ImageGallery.getMaxListPage(response);
+            var raw = response;
+            //var regex_patten = /e-hentai\.org\/g\/(?:\d+)\/(?:\S+)\/?p=(\d+)/g;
+            var regex_patten = new RegExp (ImageGallery.default_src+'g/(?:\\d+)/(?:\\S+)/?p=(\\d+)',"g");
+            var tmp_a = [];
+            while ((match = regex_patten.exec(raw)) !== null) {
+                // This is necessary to avoid infinite loops with zero-width matches
+                if (match.index === regex_patten.lastIndex) {
+                    regex_patten.lastIndex++;
+                }
+                tmp_a.push(parseInt(match[1]));
+            }
+            ImageGallery.max_list_page = Math.max.apply(Math,tmp_a) + 1;
+        });
+    }
+
+
+}
+
+module.exports = ImageGallery
+},{"@fdaciuk/ajax":1,"mithril":2}],7:[function(require,module,exports){
+var m = require("mithril");
 
 var LikedList = {
     liked_galleries: [],
@@ -1850,14 +1930,14 @@ var LikedList = {
 }
 
 module.exports = LikedList;
-},{"mithril":2}],7:[function(require,module,exports){
+},{"mithril":2}],8:[function(require,module,exports){
 var m = require("mithril");
 
 var MainMenu = {
 }
 
 module.exports = MainMenu;
-},{"mithril":2}],8:[function(require,module,exports){
+},{"mithril":2}],9:[function(require,module,exports){
 var m = require("mithril");
 
 var NavMenu = {
@@ -1870,7 +1950,7 @@ var NavMenu = {
 }
 
 module.exports = NavMenu;
-},{"mithril":2}],9:[function(require,module,exports){
+},{"mithril":2}],10:[function(require,module,exports){
 var m = require("mithril");
 
 var Overlay = {
@@ -1903,7 +1983,7 @@ var Overlay = {
 }
 
 module.exports = Overlay;
-},{"mithril":2}],10:[function(require,module,exports){
+},{"mithril":2}],11:[function(require,module,exports){
 var m = require("mithril");
 
 module.exports = {
@@ -1943,7 +2023,7 @@ module.exports = {
         }, vnode.attrs.category);
     },
 }
-},{"mithril":2}],11:[function(require,module,exports){
+},{"mithril":2}],12:[function(require,module,exports){
 var m = require("mithril");
 var GalleryList = require("../models/GalleryList");
 
@@ -1984,7 +2064,7 @@ module.exports = {
         }
     }
 }
-},{"../models/GalleryList":5,"./GalleryListItem":12,"mithril":2}],12:[function(require,module,exports){
+},{"../models/GalleryList":5,"./GalleryListItem":13,"mithril":2}],13:[function(require,module,exports){
 
 var m = require("mithril");
 var Overlay = require("../models/Overlay");
@@ -1992,9 +2072,47 @@ var LikedList = require("../models/LikedList");
 
 var GalleryCatLabel = require("./GalleryCatLabel");
 
+var tagParser = function (tag_list) {
+    var list_size = tag_list.length
+    var tag_info = { artist: 0, group: 0, others:[] }
+    for (let i = 0; i < list_size; i++) {
+        const element = tag_list[i]
+        if (element.startsWith('artist:')) {
+            tag_info["artist"] = element.replace('artist:', '')
+        }else if (element.startsWith('group:')) {
+            tag_info["group"] = element.replace('group:', '')
+        }else{
+            tag_info["others"].push(element)
+        }
+    }
+
+    return tag_info
+}
+
+var displayArtistName = function (name){
+    var output = ""
+    var splited_name = name.split(" ")
+    console.log(splited_name)
+    for (const i in splited_name) {
+        var name_part = splited_name[i]
+        
+        output += name_part.replace(name_part[0], name_part[0].toUpperCase())
+        if(i < splited_name.length - 1){
+            output += " "
+        }
+    }
+
+    return output
+}
+
 module.exports = {
     view: function (vnode) {
+        var tag_info = tagParser(vnode.attrs.item.tags)
+        var artist_name = ((tag_info["artist"] !== 0)? displayArtistName(tag_info["artist"]) : (tag_info["group"] !== 0? tag_info["group"] : "*Unknown*"))
+
         return m(".ts.raised.centered.card", [
+
+            // Gallery title
             m(".extra.content",[
                     m(".small.header", [
                         m(".single.line", [
@@ -2003,6 +2121,8 @@ module.exports = {
                     ])
                 ]
             ),
+
+            // Gallery Cover
             m(".content", [
                 m(".ts.1:1.embed", [
                     m("img", {
@@ -2011,18 +2131,27 @@ module.exports = {
                     })
                 ])
             ]),
+
+            // Gallery Info
             m(".center.aligned.extra.content", [
                 m(".ts.horizontal.bulleted.link.list", [
+
+                    // Category
                     m(".item", [
                         m(GalleryCatLabel, {
                             category: vnode.attrs.item.category
                         })
                     ]),
+
+                    // Artist/Group name
                     m(".item", [
                         m("a", {
-                            href: "#"
-                        }, "Someone")
+                            href: "#",
+                            style: ""
+                        }, artist_name)
                     ]),
+
+                    // Rating
                     m(".item", [
                         m("i", {
                             class: "star large warning icon"
@@ -2031,7 +2160,11 @@ module.exports = {
                     ]),
                 ])
             ]),
+
+            // Control Buttons
             m(".ts.fluid.bottom.attached.buttons", [
+
+                // "Download" Button
                 m("button", {
                     class: "ts big icon button"
                 }, [
@@ -2039,13 +2172,22 @@ module.exports = {
                         class: "download icon"
                     }, ""),
                 ]),
-                m("button", {
-                    class: "ts big primary icon button"
+
+                // "Read Gallery" Button
+                m("a", {
+                    class: "ts big primary icon button",
+                    href: `/Gallery?gid=${vnode.attrs.item.gid}&gtoken=${vnode.attrs.item.token}`,
+                    oncreate: m.route.link, 
+                    onclick: function() { 
+                        console.log("Read the gallery")
+                    }
                 }, [
                     m("i", {
                         class: "eye icon"
                     }, ""),
                 ]),
+
+                // "Like" Button
                 m("button", {
                     class: "ts big icon button",
                     onclick: function() {LikedList.toggleLikeGallery(vnode.attrs.item)}
@@ -2058,7 +2200,21 @@ module.exports = {
     }
 }
 
-},{"../models/LikedList":6,"../models/Overlay":9,"./GalleryCatLabel":10,"mithril":2}],13:[function(require,module,exports){
+},{"../models/LikedList":7,"../models/Overlay":10,"./GalleryCatLabel":11,"mithril":2}],14:[function(require,module,exports){
+var m = require("mithril");
+var ImageGallery = require("../models/ImageGallery");
+
+module.exports = {
+    oninit: function (vnode) {
+        var gid = Number(m.route.param("gid"))
+        var gtoken = String(m.route.param("gtoken"))
+        console.log(gid)
+    },
+    view: function (vnode) {
+        return m(".ts.active.centered.inline.text.loader", "載入中...")
+    }
+}
+},{"../models/ImageGallery":6,"mithril":2}],15:[function(require,module,exports){
 var m = require("mithril");
 var LikedList = require("../models/LikedList");
 
@@ -2101,7 +2257,7 @@ module.exports = {
         }
     }
 }
-},{"../models/LikedList":6,"./GalleryListItem":12,"mithril":2}],14:[function(require,module,exports){
+},{"../models/LikedList":7,"./GalleryListItem":13,"mithril":2}],16:[function(require,module,exports){
 var m = require("mithril");
 var MainMenu = require("../models/MainMenu");
 var GalleryList = require("../models/GalleryList");
@@ -2135,24 +2291,46 @@ module.exports = {
         ]);
     }
 }
-},{"../models/GalleryList":5,"../models/MainMenu":7,"mithril":2}],15:[function(require,module,exports){
+},{"../models/GalleryList":5,"../models/MainMenu":8,"mithril":2}],17:[function(require,module,exports){
 var m = require("mithril");
 var NavMenu = require("../models/NavMenu");
 
 module.exports = {
-    view: function (vnode) {
-        return m("div", { class: "ts borderless inverted primary raised top fixed fluid large menu" },[
+    data: {
+        menu_buttons: []
+    },
+    oninit: function (vnode) {
+        console.log(`Is gallery? ${vnode.attrs.is_gallery}`)
+        var search_button = m("a", { class: "item"}, [
+            m("i", { class: "search icon" }, "")
+        ])
+
+        var back_button = m("a", { 
+            class: "item",
+            href: "/Home",
+            oncreate: m.route.link, 
+            onclick: function() { 
+            }
+        }, [
+            m("i", { class: "cancel icon" }, "")
+        ])
+
+        var is_gallery = Number(vnode.attrs.is_gallery) === 1 || false
+        vnode.state.data.menu_buttons = [
             m("a", { class: "item",  onclick: NavMenu.toggleMainMenu}, [
                 m("i", { class: "list icon" }, "")
             ]),
             m("div", { class: "header stretched center aligned item" }, "Gallery List"),
-            m("a", { class: "item"}, [
-                m("i", { class: "search icon" }, "")
-            ])
-        ]);
+            (!is_gallery? search_button: back_button)
+        ]
+    },
+    view: function (vnode) {
+        return m("div", { class: "ts borderless inverted primary raised top fixed fluid large menu" }, 
+            vnode.state.data.menu_buttons
+        );
     }
 }
-},{"../models/NavMenu":8,"mithril":2}],16:[function(require,module,exports){
+},{"../models/NavMenu":9,"mithril":2}],18:[function(require,module,exports){
 var m = require("mithril");
 
 var Overlay = require("../models/Overlay");
@@ -2168,7 +2346,7 @@ module.exports = {
         }
     }
 }
-},{"../models/Overlay":9,"mithril":2}],17:[function(require,module,exports){
+},{"../models/Overlay":10,"mithril":2}],19:[function(require,module,exports){
 var m = require("mithril");
 
 module.exports = {
