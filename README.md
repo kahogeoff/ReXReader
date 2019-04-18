@@ -1,5 +1,14 @@
 # ReXReader
+
 [![works badge](https://cdn.rawgit.com/nikku/works-on-my-machine/v0.2.0/badge.svg)](https://github.com/nikku/works-on-my-machine)
+
+## IMPORTANT UPDATE!
+
+Since I have lost the interest in developing mobile apps and decided to stop using smart-device in the future after my current one went malfunction. This repo is now considered an abandoned repo, which means I may not update this anymore.
+
+However, If you have any interest to continue to develop this app, feel free to fork this repo, develop and publish the app without my permission. Furthermore, you can feel free to email me to ask any questions and the detail about the existed code. The only thing you need to do is follow the [LICENSE](LICENSE.md) and don't be a dick.
+
+---
 
 A remake version of my pervious E-/Exhentai reader, for both iOS and Android devices.
 
