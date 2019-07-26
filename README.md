@@ -2,6 +2,14 @@
 
 [![works badge](https://cdn.rawgit.com/nikku/works-on-my-machine/v0.2.0/badge.svg)](https://github.com/nikku/works-on-my-machine)
 
+## R.I.P. e-hentai & exhentai
+
+Thank you for company with us in every lonely night...
+
+(;´༎ຶД༎ຶ`)
+
+---
+
 ## IMPORTANT UPDATE!
 
 Since I have lost the interest in developing mobile apps and decided to stop using smart-device in the future after my current one went malfunction. This repo is now considered an abandoned repo, which means I may not update this anymore.
