@@ -1,3 +1,4 @@
 www/_backup/* linguist-vendored
-www/css/tocas.css* linguist-vendored
+www/css/tocas.css linguist-vendored
+www/css/tocas.css.map linguist-vendored
 www/fonts/* linguist-vendored
