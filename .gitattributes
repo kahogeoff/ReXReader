@@ -1,6 +1,8 @@
-www/_backup/* linguist-vendored=false
+www/_backup/* linguist-vendored
+www/_backup/*/* linguist-vendored
 www/css/animate.css linguist-vendored
 5a1980f6-f03a8928.css linguist-vendored
+www/js/tocas.js linguist-vendored
 www/css/tocas.css linguist-vendored
 www/css/tocas.css.map linguist-vendored 
 www/fonts/* linguist-vendored
