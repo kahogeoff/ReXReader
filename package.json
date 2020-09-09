@@ -23,7 +23,7 @@
         "cordova-plugin-statusbar": "^2.2.3",
         "cordova-plugin-whitelist": "^1.3.2",
         "hammerjs": "^2.0.8",
-        "mithril": "^1.1.3",
+        "mithril": "^1.1.7",
         "photoswipe": "^4.1.2",
         "pulltorefreshjs": "github:BoxFactura/pulltorefresh.js"
     },
