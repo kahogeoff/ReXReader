@@ -12,9 +12,9 @@
     "dependencies": {
         "@fdaciuk/ajax": "^2.3.0",
         "browserify": "^14.4.0",
-        "cordova-android": "^6.2.3",
+        "cordova-android": "^11.0.0",
         "cordova-browser": "^4.1.0",
-        "cordova-ios": "^4.4.0",
+        "cordova-ios": "^6.3.0",
         "cordova-plugin-blurry-privacy-screen": "git+https://github.com/lifeofcoding/cordova-blur-app-privacy-screen.git",
         "cordova-plugin-compat": "^1.1.0",
         "cordova-plugin-console": "^1.0.7",
